@@ -14,7 +14,7 @@ const error = chalk.red.bold;
 mongoose.connect(dbConfig.url, runCron);
 
 function runCron() {
-  cron.schedule('0-59 * * * *', () => {
+  cron.schedule('0 0 * * * *', () => {
     fetchApi.getApi(API).then((result) => {
       console.log( info('*******************************************') );
       console.log( info('**************** Node Cron ****************') );
