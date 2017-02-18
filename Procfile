@@ -1,1 +1,2 @@
-web: node server/index.js && node server/cron.js
+web: node server/index.js
+worker: node server/cron.js
