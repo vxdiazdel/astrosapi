@@ -2,9 +2,10 @@ const axios = require('axios');
 const API = 'http://api.open-notify.org/astros.json';
 
 const db = require('./../db/models');
+const fetchApi = require('./../services/fetchApi');
 
 const getAstros = (req, res) => {
-  db.Astro.find({}).exec().then((docs) => {
+  db.Astro.find({}).then((docs) => {
     res.status(200).json({
       status: 'success',
       data: docs
@@ -19,7 +20,7 @@ const getAstros = (req, res) => {
 }
 
 const postAstros = (req, res) => {
-  axios.get(API)
+  fetchApi.getApi(API)
     .then((result) => {
       const people = result.data;
       const astros = new db.Astro(people);
